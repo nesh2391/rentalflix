@@ -43,7 +43,7 @@ public class MovieServiceTest {
 	}
 	
 	/**
-	 * Find movies by name
+	 * Find a movie that exists by name
 	 */
 	@Test
 	public void findByNameWhenPresent()
@@ -51,6 +51,16 @@ public class MovieServiceTest {
 		ArrayList<Movie> list =  (ArrayList<Movie>) ms.findByName("Movie One");
 		Movie movie = (Movie)list.get(0);
 	    assertTrue("Movie One".equals(movie.getTitle()) && movie.getId() == 1   );
+	}
+	
+	/**
+	 * Find a movie that does not exist by name
+	 */
+	@Test
+	public void findByNameWhenNotPresent()
+	{
+		ArrayList<Movie> list =  (ArrayList<Movie>) ms.findByName("Movie One One One");
+	    assertTrue(list.isEmpty() );
 	}
 	
 	/**
